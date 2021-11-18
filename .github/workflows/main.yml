@@ -34,7 +34,7 @@ jobs:
             if [ $# == 0 ]; then
               echo "编译成功。。。。。"
               ls
-              mv target/JHook-3-jar-with-dependencies.jar ../
+              mv `ls target/*.jar` ../ts.jar
               echo "拷贝成功。。。。。"
               ls ../
             fi
@@ -42,5 +42,5 @@ jobs:
           fi
           
       - name: run java project
-        run: java -jar  ./JHook-3-jar-with-dependencies.jar
+        run: java -jar  ./ts.jar
 
