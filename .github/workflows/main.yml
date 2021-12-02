@@ -1,4 +1,4 @@
-name: CI
+name: schedule-update
 on:
   push:
     branches: [ main ]
@@ -7,7 +7,7 @@ on:
   # run every 1 hour
   schedule:
     #   分 时 日 月 周
-    - cron: '*/30 * * * *'
+    - cron: '*/45 * * * *'
 
 jobs:
   build:
