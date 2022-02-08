@@ -7,7 +7,7 @@ on:
   # run every 1 hour
   schedule:
     #   分 时 日 月 周
-    - cron: '*/15 * * * *'
+    - cron: '*/45 * * * *'
 
 jobs:
   build:
