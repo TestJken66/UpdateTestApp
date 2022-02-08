@@ -7,7 +7,7 @@ on:
   # run every 1 hour
   schedule:
     #   分 时 日 月 周
-    - cron: '*/45 * * * *'
+    - cron: '*/50 * * * *'
 
 jobs:
   build:
@@ -19,6 +19,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+
       - name: Build with Maven
         run: |
           git clone https://oauth2:${{ secrets.GTOKEN }}@github.com/NetCapture/JHook.git
@@ -37,7 +38,6 @@ jobs:
               echo "拷贝成功。。。。。"
               ls ../
             fi
-
           fi
           
       - name: run java project
