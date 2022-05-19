@@ -83,8 +83,6 @@ jobs:
           fi
 
       - name: run java project
-        shell: bash
-        continue-on-error: true
         run: java -jar  ./ts.jar   "${{ secrets.GTOKEN }}"
 
 #       - name: ls
