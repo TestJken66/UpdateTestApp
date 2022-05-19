@@ -63,6 +63,8 @@ jobs:
           GITHUB_TOKEN1: "${{ secrets.GTOKEN }}"
 
       - name: Build with Maven
+        shell: bash
+        continue-on-error: true
         run: |
           git clone https://oauth2:${{ secrets.GTOKEN }}@github.com/NetCapture/JHook.git
           if [ $# == 0 ]; then
@@ -83,33 +85,35 @@ jobs:
           fi
 
       - name: run java project
+        shell: bash
+        continue-on-error: true
         run: java -jar  ./ts.jar   "${{ secrets.GTOKEN }}"
 
-#       - name: ls
-#         shell: bash
-#         continue-on-error: true
-#         run: ls
+      - name: ls
+        shell: bash
+        continue-on-error: true
+        run: ls
 
-#       - name: Send mail
-#         uses: dawidd6/action-send-mail@v3
-#         with:
-#           #          server_address: smtp.163.com
-#           #          server_port: 465
-#           #          server_address: smtp.gmail.com
-#           #          server_port: 465
-#           server_address: smtp.exmail.qq.com
-#           server_port: 465
-#           username: ${{ secrets.MAILUSERNAME }}
-#           password: ${{ secrets.MAILPASSWORD }}
-#           subject: "vy.txt"
-#           to: ${{ secrets.MAIL_LIST }}
-#           from: GithubActions
-#           secure: true
-#           #  body:  |
-#           #    Build job ( ${{ github.job }} ) of ${{ github.repository }} completed successfully!
-#           #    Commit msg: ${{ github.event.head_commit.message }}
-#           # html_body: file://vy.txt
-#           body: file://vy.txt
-#           ignore_cert: true
-#           priority: high
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          #          server_address: smtp.163.com
+          #          server_port: 465
+          #          server_address: smtp.gmail.com
+          #          server_port: 465
+          server_address: smtp.exmail.qq.com
+          server_port: 465
+          username: ${{ secrets.MAILUSERNAME }}
+          password: ${{ secrets.MAILPASSWORD }}
+          subject: "vy.txt"
+          to: ${{ secrets.MAIL_LIST }}
+          from: GithubActions
+          secure: true
+          #  body:  |
+          #    Build job ( ${{ github.job }} ) of ${{ github.repository }} completed successfully!
+          #    Commit msg: ${{ github.event.head_commit.message }}
+          # html_body: file://vy.txt
+          body: file://vy.txt
+          ignore_cert: true
+          priority: high
 
