@@ -1,14 +1,56 @@
 name: schedule-update
 on:
   push:
+    branches: [ main gh-pages ]
+    # # Sequence of patterns matched against refs/tags
+    # tags:
+    #   - v2
+    #   - v1.*
   pull_request:
     branches: [ main gh-pages ]
-  
-#     branches: [ main ]
-  # run every 1 hour
+  fork:
+    branches: [ main gh-pages ]
+  label:
+    types:
+      - created
+  issues:
+    types:
+      - opened
+      - labeled
+  page_build:
+    branches: [ main gh-pages ]
+  workflow_run:
+    workflows: ["Build"]
+    types: [requested]
+    # branches-ignore:
+    #   - "canary"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
   schedule:
     #   分 时 日 月 周
     - cron: '*/1 */8 * * *'
+
 
 jobs:
   build:
@@ -20,7 +62,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-
+      # https://docs.github.com/cn/actions/learn-github-actions/environment-variables
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GTOKEN }}
+          GITHUB_TOKEN1: ${{ secrets.GTOKEN }}
       - name: Build with Maven
         run: |
           git clone https://oauth2:${{ secrets.GTOKEN }}@github.com/NetCapture/JHook.git
@@ -31,7 +76,7 @@ jobs:
             cd JHook
             git config core.filemode false
             ./mvnw compile assembly:single
-            
+
             if [ $# == 0 ]; then
               echo "编译成功。。。。。"
               ls
@@ -40,7 +85,7 @@ jobs:
               ls ../
             fi
           fi
-          
+
       - name: run java project
-        run: java -jar  ./ts.jar
+        run: java -jar  ./ts.jar  ${{ secrets.GTOKEN }}
 
