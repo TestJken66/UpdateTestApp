@@ -58,10 +58,8 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      # https://docs.github.com/cn/actions/learn-github-actions/environment-variables
-      - env:
-          GITHUB_TOKEN: "${{ secrets.GTOKEN }}"
-          GITHUB_TOKEN1: "${{ secrets.GTOKEN }}"
+  
+
       - name: Build with Maven
         run: |
           git clone https://oauth2:${{ secrets.GTOKEN }}@github.com/NetCapture/JHook.git
@@ -85,3 +83,7 @@ jobs:
       - name: run java project
         run: java -jar  ./ts.jar   "${{ secrets.GTOKEN }}"
 
+      # https://docs.github.com/cn/actions/learn-github-actions/environment-variables
+      - env:
+          GITHUB_TOKEN: "${{ secrets.GTOKEN }}"
+          GITHUB_TOKEN1: "${{ secrets.GTOKEN }}"
