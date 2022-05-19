@@ -1,7 +1,7 @@
-name: schedule-update
+name: schedule
+
 on:
   push:
-    branches: [main gh-pages]
   pull_request:
     branches: [main gh-pages]
   schedule:
