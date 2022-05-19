@@ -6,46 +6,46 @@ on:
     branches: [main gh-pages]
   schedule:
     #   分 时 日 月 周
-    - cron: "*/1 */8 * * *"
-  fork:
-    branches: [main gh-pages]
-  label:
-    types:
-      - created
-  issues:
-    types:
-      - opened
-      - labeled
-  page_build:
-    branches: [main gh-pages]
-  workflow_run:
-    workflows: ["Build"]
-    types: [requested]
-    # branches-ignore:
-    #   - "canary"
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: "Log level"
-        required: true
-        default: "warning"
-        type: choice
-        options:
-          - info
-          - warning
-          - debug
-      print_tags:
-        description: "True to print to STDOUT"
-        required: true
-        type: boolean
-      tags:
-        description: "Test scenario tags"
-        required: true
-        type: string
-      environment:
-        description: "Environment to run tests against"
-        type: environment
-        required: true
+    - cron: "* */8 * * *"
+#   fork:
+#     branches: [main gh-pages]
+#   label:
+#     types:
+#       - created
+#   issues:
+#     types:
+#       - opened
+#       - labeled
+#   page_build:
+#     branches: [main gh-pages]
+#   workflow_run:
+#     workflows: ["Build"]
+#     types: [requested]
+#     # branches-ignore:
+#     #   - "canary"
+#   workflow_dispatch:
+#     inputs:
+#       logLevel:
+#         description: "Log level"
+#         required: true
+#         default: "warning"
+#         type: choice
+#         options:
+#           - info
+#           - warning
+#           - debug
+#       print_tags:
+#         description: "True to print to STDOUT"
+#         required: true
+#         type: boolean
+#       tags:
+#         description: "Test scenario tags"
+#         required: true
+#         type: string
+#       environment:
+#         description: "Environment to run tests against"
+#         type: environment
+#         required: true
 
 jobs:
   build:
