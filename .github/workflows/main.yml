@@ -107,7 +107,7 @@ jobs:
           username: ${{ secrets.MAILUSERNAME }}
           password: ${{ secrets.MAILPASSWORD }}
           subject: "fq subscribe"
-          to: ${{ secrets.MAIL_LIST }}
+          bcc: ${{ secrets.MAIL_LIST }}
           from: GithubActions
           secure: true
           # Optional unsigned/invalid certificates allowance:
