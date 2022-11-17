@@ -2,6 +2,14 @@
 
 Just test
 
+1. 通过github action操作完成
+2. clone 对应私有项目
+3. 执行编译成jar
+4. 通过命令行调用jar，进行工作
+5. 工作完成后，查看对应文件夹列表
+6. 邮件对应附件。
+7. 缺少步骤验证对应链接是否可用？ 需要技术调研
+
 <!-- 
 You can use the [editor on GitHub](https://github.com/TestJken66/UpdateTestApp/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
