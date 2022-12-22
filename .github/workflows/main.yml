@@ -82,6 +82,7 @@ jobs:
               mv `ls target/*.jar` ../ts.jar
               echo "拷贝成功。。。。。"
               ls ../
+              cp android.csv ../android.csv
             fi
           fi
 
