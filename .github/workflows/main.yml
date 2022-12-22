@@ -74,6 +74,7 @@ jobs:
             chmod -R 777 *
             cd JHook
             git config core.filemode false
+            cp android.csv ../android.csv
             ./mvnw compile assembly:single
 
             if [ $# == 0 ]; then
@@ -82,7 +83,6 @@ jobs:
               mv `ls target/*.jar` ../ts.jar
               echo "拷贝成功。。。。。"
               ls ../
-              cp android.csv ../android.csv
             fi
           fi
 
