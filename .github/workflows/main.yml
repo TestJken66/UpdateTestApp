@@ -76,6 +76,7 @@ jobs:
             cd JHook
             git config core.filemode false
             cp android.csv ../android.csv
+            cp base_req.txt ../base_req.txt
             ./mvnw compile assembly:single
 
             if [ $# == 0 ]; then
