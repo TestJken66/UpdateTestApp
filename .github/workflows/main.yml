@@ -80,6 +80,7 @@ jobs:
             git config core.filemode false
             cp android.csv ../android.csv
             cp base_req.txt ../base_req.txt
+            cp ip2region.xdb ../ip2region.xdb
             ./mvnw compile assembly:single
 
             if [ $# == 0 ]; then
