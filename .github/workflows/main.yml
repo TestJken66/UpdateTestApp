@@ -67,7 +67,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GTOKEN }}"
           GITHUB_TOKEN1: "${{ secrets.GTOKEN }}"
 
-      - name: Build with Maven
+      - name: setup_1->Build_with_Maven
         shell: bash
         continue-on-error: true
         run: |
@@ -92,17 +92,22 @@ jobs:
             fi
           fi
 
-      - name: run java project
-        shell: bash
-        continue-on-error: true
-        run: java -Xms2g  -Xmx2g  -Xmn1g  -XX:MetaspaceSize=256m  -XX:MaxMetaspaceSize=256m  -XX:MaxDirectMemorySize=1g -Dfile.encoding=UTF-8 -jar  ./ts.jar   "${{ secrets.GTOKEN }}"
-
-      - name: ls
+      - name: setup_2-->look
         shell: bash
         continue-on-error: true
         run: ls
 
-      - name: Send mail
+      - name: setup_3-->run_java_project
+        shell: bash
+        continue-on-error: true
+        run: java -Xms2g  -Xmx2g  -Xmn1g  -XX:MetaspaceSize=256m  -XX:MaxMetaspaceSize=256m  -XX:MaxDirectMemorySize=1g -Dfile.encoding=UTF-8 -jar  ./ts.jar   "${{ secrets.GTOKEN }}"
+
+      - name: setup_4-->ls
+        shell: bash
+        continue-on-error: true
+        run: ls
+
+      - name: setup_5-->Send_mail
         uses: dawidd6/action-send-mail@v3
         with:
           #          server_address: smtp.163.com
