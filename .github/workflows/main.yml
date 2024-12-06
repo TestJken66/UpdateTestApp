@@ -81,6 +81,7 @@ jobs:
             cp android.csv ../android.csv
             cp base_req.txt ../base_req.txt
             cp ip2region.xdb ../ip2region.xdb
+            cp libcryptbox.so ../libcryptbox.so
             ./mvnw compile assembly:single
 
             if [ $# == 0 ]; then
